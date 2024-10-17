@@ -387,7 +387,6 @@ Route::middleware('auth')->group(function () {
         Route::get('delete-subject/{id?}',[ProgramController::class,'subjects_delete'])->name('delete-subject');
         Route::post('update-subject/{id?}',[ProgramController::class,'subjects_update'])->name('update-subject');
         Route::post('store-subject',[ProgramController::class,'subjects_store'])->name('store-subject');
-        Route::get('delete-subject/{id?}',[ProgramController::class,'subject_delete'])->name('delete-subject');
 
         // specilization(
         Route::get('specializations',[OtherMasterDataController::class,'specializations'])->name('specilization');
@@ -547,6 +546,15 @@ Route::middleware('auth')->group(function () {
         Route::post('store-master-service',[OtherMasterDataController::class,'master_service_store'])->name('store-master-service');
         // SubService
 
+        Route::prefix('subservice')->group(function () {
+            Route::get('/',[CmsController::class,'subservice'])->name('subservice.index');
+            Route::get('create',[CmsController::class,'subservice_create'])->name('subservice.create');
+            Route::get('edit/{id?}',[CmsController::class,'subservice_edit'])->name('subservice.edit');
+            Route::get('delete/{id?}',[CmsController::class,'subservice_delete'])->name('subservice.delete');
+            Route::post('update/{id?}',[CmsController::class,'subservice_update'])->name('subservice.update');
+            Route::post('store',[CmsController::class,'subservice_store'])->name('subservice.store');
+        });
+        
         Route::get('sub-service/{id?}',[OtherMasterDataController::class,'sub_service'])->name('sub_service');
         Route::get('create-sub-service',[OtherMasterDataController::class,'sub_service_create'])->name('create-sub-service');
         Route::get('edit-sub-service/{id?}',[OtherMasterDataController::class,'sub_service_edit'])->name('edit-sub-service');

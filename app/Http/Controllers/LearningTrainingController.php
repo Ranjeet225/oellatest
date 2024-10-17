@@ -54,8 +54,8 @@ class LearningTrainingController extends Controller
         $request->validate([
             'name' => 'required|string',
             'learning_user' => 'required|string',
-            'pdf' => 'nullable|mimes:pdf',
-            'video' => 'nullable|mimes:mp4,mov,avi',
+            'pdf' => 'nullable|mimes:pdf|max:10240',
+            'video' => 'nullable|mimes:mp4,mov,avi|max:10240',
             'youtube_link' => 'nullable|url'
         ]);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{
     Country,
     EducationHistory,
+    PopularStudentGuide,
     EducationLevel,
     MasterService,
     Payment,

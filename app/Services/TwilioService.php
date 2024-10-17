@@ -8,16 +8,16 @@ class TwilioService
 {
     protected $client;
 
-    public function __construct()
-    {
-        $this->client = new Client(config('twilio.sid'), config('twilio.token'));
-    }
+    // public function __construct()
+    // {
+    //     $this->client = new Client(config('twilio.sid'), config('twilio.token'));
+    // }
 
-    public function sendSms($to, $message)
-    {
-        return $this->client->messages->create($to, [
-            'from' => config('twilio.from'),
-            'body' => $message,
-        ]);
-    }
+    // public function sendSms($to, $message)
+    // {
+    //     return $this->client->messages->create($to, [
+    //         'from' => config('twilio.from'),
+    //         'body' => $message,
+    //     ]);
+    // }
 }

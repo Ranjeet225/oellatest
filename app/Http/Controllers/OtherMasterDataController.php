@@ -19,6 +19,7 @@ use App\Models\{
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Validator;
 use DB;
 
 class OtherMasterDataController extends Controller
@@ -80,10 +81,14 @@ class OtherMasterDataController extends Controller
 
     public function specializations_delete(Request $request)
     {
-        $specialization = Specialisations::find($request->id);
-        $specialization->delete();
-        return redirect()->route('specilization')
-            ->with('success', 'Specialization deleted successfully');
+        if ($specialization = Specialisations::find($request->id)) {
+            $specialization->delete();
+            return redirect()->route('specilization')
+                ->with('success', 'Specialization deleted successfully');
+        } else {
+            return redirect()->route('specilization')
+                ->with('error', 'Specialization not found');
+        }
     }
 
     // source
@@ -138,10 +143,14 @@ class OtherMasterDataController extends Controller
 
     public function source_delete(Request $request)
     {
-        $source = Source::find($request->id);
-        $source->delete();
-        return redirect()->route('source')
-            ->with('success', 'Source deleted successfully');
+        if (Source::find($request->id)) {
+            Source::find($request->id)->delete();
+            return redirect()->route('source')
+                ->with('success', 'Source deleted successfully');
+        } else {
+            return redirect()->route('source')
+                ->with('error', 'Source not found');
+        }
     }
 
     // interested
@@ -197,9 +206,11 @@ class OtherMasterDataController extends Controller
     public function interested_delete(Request $request)
     {
         $interested = Intrested::find($request->id);
+        if(!$interested){
+            return redirect()->route('interested')->with('error','Check id exit or not');
+        }
         $interested->delete();
-        return redirect()->route('interested')
-            ->with('success', 'interested deleted successfully');
+        return redirect()->route('interested')->with('success', 'interested deleted successfully');
     }
 
 

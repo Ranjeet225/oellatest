@@ -6,6 +6,7 @@ use App\Models\{Country, Program, SchoolReview, SchoolType, University};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, Cache, DB, Route, URL};
 use Carbon\Carbon;
+use Validator;
 use Illuminate\Support\Str;
 class UniversityController extends Controller
 {

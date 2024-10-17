@@ -69,9 +69,12 @@ class CmsController extends Controller
     }
     public function blogs_delete($id)
     {
-        $blog = Blog::find($id);
-        $blog->delete();
-        return redirect()->route('blogs')->with('success','Data Deleted Successfully');
+        if(Blog::find($id)){
+            Blog::find($id)->delete();
+            return redirect()->route('blogs')->with('success','Data Deleted Successfully');
+        }else{
+            return redirect()->route('blogs')->with('error','Check id exit or not');
+        }
     }
 
     // testimonial
@@ -157,9 +160,12 @@ class CmsController extends Controller
     }
     public function testimonial_delete($id)
     {
-        $testimonial = Testimonials::find($id);
-        $testimonial->delete();
-        return redirect()->route('testimonial')->with('success','Data Deleted Successfully');
+        if(Testimonials::find($id)){
+            Testimonials::find($id)->delete();
+            return redirect()->route('testimonial')->with('success','Data Deleted Successfully');
+        }else{
+            return redirect()->route('testimonial')->with('error','Check id exit or not');
+        }
     }
 
 
@@ -236,12 +242,16 @@ class CmsController extends Controller
 
     public function service_delete($id)
     {
-        $service = ServiceLanding::find($id);
-        if ($service->image && file_exists(public_path('imagesapi/' . $service->image))) {
-            unlink(public_path('imagesapi/' . $service->image));
+        if (ServiceLanding::find($id)) {
+            $service = ServiceLanding::find($id);
+            if ($service->image && file_exists(public_path('imagesapi/' . $service->image))) {
+                unlink(public_path('imagesapi/' . $service->image));
+            }
+            $service->delete();
+            return redirect()->route('service.index')->with('success','Data Deleted Successfully');
+        } else {
+            return redirect()->route('service.index')->with('error','Data not found');
         }
-        $service->delete();
-        return redirect()->route('service.index')->with('success','Data Deleted Successfully');
     }
 
     public function instagram()
@@ -322,12 +332,16 @@ class CmsController extends Controller
 
     public function feedbackvideo_delete($id)
     {
-        $feedbackvideo = FeedbackVideo::find($id);
-        if (file_exists(public_path('/video/'.$feedbackvideo->video_url))) {
-            unlink(public_path('/video/'.$feedbackvideo->video_url));
+        if(FeedbackVideo::find($id)){
+            $feedbackvideo = FeedbackVideo::find($id);
+            if (file_exists(public_path('/video/'.$feedbackvideo->video_url))) {
+                unlink(public_path('/video/'.$feedbackvideo->video_url));
+            }
+            $feedbackvideo->delete();
+            return redirect()->route('feedbackvideo')->with('success','Data Deleted Successfully');
+        }else{
+            return redirect()->route('feedbackvideo')->with('error','Check id exit or not');
         }
-        $feedbackvideo->delete();
-        return redirect()->route('feedbackvideo')->with('success','Data Deleted Successfully');
     }
 
     public function feedbackvideo_update(Request $request, $id)

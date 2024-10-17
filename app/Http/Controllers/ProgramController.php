@@ -571,8 +571,12 @@ class ProgramController extends Controller
 
 
     public function grading_scheme_delete($id){
-        GradingScheme::find($id)->delete();
-        return redirect()->route('grading-scheme')->with('success','Data Deleted Successfully');
+        if(GradingScheme::find($id)){
+            GradingScheme::find($id)->delete();
+            return redirect()->route('grading-scheme')->with('success','Data Deleted Successfully');
+        }else{
+            return redirect()->route('grading-scheme')->with('error','Data not found');
+        }
     }
 
     public function grading_scheme_update(Request $request,$id){
@@ -951,7 +955,11 @@ class ProgramController extends Controller
     }
 
     public function documents_delete($id = null){
-        Documents::find($id)->delete();
+        if(Documents::find($id)){
+            Documents::find($id)->delete();
+        }else{
+            return redirect()->route('documents')->with('error','Check id exit or not');
+        }
         return redirect()->route('documents')->with('success','Data Deleted Successfully');
     }
 

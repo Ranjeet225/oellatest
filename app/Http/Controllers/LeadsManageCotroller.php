@@ -12,6 +12,8 @@ use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Auth, DB, FacadesValidator, Http, Log, Mail, Session, Str};
 use Maatwebsite\Excel\Facades\Excel;
+use Spatie\Permission\Models\Role;
+use Validator;
 
 class LeadsManageCotroller extends Controller
 {
@@ -1628,7 +1630,11 @@ class LeadsManageCotroller extends Controller
             if ($role) {
                 $user->assignRole([$role->id]);
             }
-            Mail::to($student_agent->email)->send(new StudentRegistraionMail($student_data));
+            try {
+               Mail::to($student_agent->email)->send(new StudentRegistraionMail($student_data));
+            } catch (\Exception $e) {
+                Log::info('Mail not send to '.$student_agent->email);
+            }
         }
         return redirect()->route('leads-filter')->with('success', 'User Profile Created Successfully');
     }

@@ -10,6 +10,7 @@ use App\Mail\SendOtp;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\{Auth, DB, Mail, RateLimiter, Log};
+use Validator;
 
 
 class FrontendController extends Controller

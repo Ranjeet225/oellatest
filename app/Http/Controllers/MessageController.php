@@ -9,6 +9,7 @@ use App\Models\{Agent, Country, MasterLeadStatus, Message, Outbox, SmsTemplate, 
 use App\Services\TwilioService;
 use Illuminate\Support\Facades\{Auth, Log};
 use SendGrid\Mail\Mail;
+use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 
 class MessageController extends Controller
