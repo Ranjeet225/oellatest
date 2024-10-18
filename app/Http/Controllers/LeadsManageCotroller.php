@@ -905,6 +905,7 @@ class LeadsManageCotroller extends Controller
             $table_three_sixtee_image = null;
         }
         $paymentStatuses = ['2' => 'application_fees', '3' => 'tution_fees', '4' => 'visa_fess'];
+        
         $paymentStatusDone = [];
         foreach ($paymentStatuses as $masterService => $paymentStatus) {
             $checkPayment = PaymentsLink::where('user_id', $studentDetails->user_id)->where('master_service', $masterService)->select('fallowp_unique_id')->first();

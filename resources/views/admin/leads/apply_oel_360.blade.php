@@ -384,8 +384,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if(!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if(!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form class="row g-4" id ="tab1DataForm">
@@ -424,7 +424,7 @@
                                         </div>
                                         <br>
                                         <div class="d-flex" >
-                                            @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done')
+                                            @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done')
                                             <a class="btn btn btn-primary next "  id="tab1datasubmit">
                                                 <span class="spinner-grow spinner-grow-sm d-none" role="status"
                                                     aria-hidden="true"></span>
@@ -443,8 +443,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <div class="alert-course"> </div>
@@ -481,7 +481,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn btn-warning previous me-2 "> Back</a>
-                                        @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done')
+                                        @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done')
                                         <a class="btn btn-primary next " ><span class="spinner-grow spinner-grow-sm d-none"
                                                 role="status" aria-hidden="true"></span> continue</a>
                                         @endif
@@ -497,8 +497,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id ="tab3DataForm">
@@ -514,7 +514,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn-warning previous me-2 ">Previous</a>
-                                        @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done')
+                                        @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done')
                                         <a class="btn btn-primary next " data-bs-toggle="modal"
                                             data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                                 role="status" aria-hidden="true"></span> continue</a>
@@ -530,8 +530,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <div class="alert-image-error"> </div>
@@ -604,7 +604,7 @@
                                                 <a class="btn btn-success upload-image me-2">
                                                     <span class="spinner-grow spinner-grow-sm d-none" role="status"
                                                         aria-hidden="true"></span>Uplaod image</a>
-                                                @if ((!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done'))
+                                                @if ((!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done'))
                                                     <a class="btn btn-primary next " data-bs-toggle="modal"
                                                     data-bs-target="#save_modal"><span
                                                         class="spinner-grow spinner-grow-sm d-none" role="status"
@@ -624,8 +624,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id ="tab7DataForm">
@@ -720,7 +720,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn-warning previous me-2">Previous</a>
-                                        @if ((!empty($paymentStatusDone['application_fees']) && $paymentStatusDone['application_fees'] == 'Done'))
+                                        @if ((!empty($paymentStatusDone['University Application Fee']) && $paymentStatusDone['University Application Fee'] == 'Done'))
                                         <a class="btn btn-primary next" data-bs-toggle="modal"
                                             data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                                 role="status" aria-hidden="true"></span>Continue</a>
@@ -737,8 +737,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id ="tab5DataForm">
@@ -887,7 +887,7 @@
                                         <a class="btn btn-success upload-visa-document me-2">
                                             <span class="spinner-grow spinner-grow-sm d-none" role="status"
                                         aria-hidden="true"></span>Uplaod Document</a>
-                                        @if ((!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done'))
+                                        @if ((!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done'))
                                         <a class="btn btn-primary next" data-bs-toggle="modal"
                                         data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                             role="status" aria-hidden="true"></span>Continue</a>
@@ -903,8 +903,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id ="tab6DataForm">
@@ -968,7 +968,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn-warning previous me-2">Previous</a>
-                                        @if ((!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done'))
+                                        @if ((!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done'))
                                         <a class="btn btn-primary next" data-bs-toggle="modal"
                                         data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                             role="status" aria-hidden="true"></span>Continue</a>
@@ -984,8 +984,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id ="tab8DataForm">
@@ -1027,7 +1027,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn-warning previous me-2 ">Previous</a>
-                                        @if ((!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done'))
+                                        @if ((!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done'))
                                         <a class="btn btn-primary next" data-bs-toggle="modal"
                                             data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                                 role="status" aria-hidden="true"></span>Continue</a>
@@ -1043,8 +1043,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id ="tab9DataForm">
@@ -1080,7 +1080,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn-warning previous   me-2">Previous</a>
-                                        @if ((!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done'))
+                                        @if ((!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done'))
                                         <a class="btn btn-primary next" data-bs-toggle="modal"
                                             data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                                 role="status" aria-hidden="true"></span>Continue</a>
@@ -1096,8 +1096,8 @@
                                     <h4>Payment Status</h4>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="paid"
-                                            @if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') checked @endif>
-                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done') Paid @else Unpaid @endif</label>
+                                            @if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') checked @endif>
+                                        <label class="form-check-label" for="paid">@if (!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done') Paid @else Unpaid @endif</label>
                                     </div>
                                     <hr>
                                     <form id="tab10DataForm">
@@ -1132,7 +1132,7 @@
                                     </form>
                                     <div class="d-flex">
                                         <a class="btn btn-warning previous me-2  ">Previous</a>
-                                      @if ((!empty($paymentStatusDone['visa_fess']) && $paymentStatusDone['visa_fess'] == 'Done'))
+                                      @if ((!empty($paymentStatusDone['Visa Processing Fee']) && $paymentStatusDone['Visa Processing Fee'] == 'Done'))
                                         <a class="btn btn-primary next" data-bs-toggle="modal"
                                             data-bs-target="#save_modal"><span class="spinner-grow spinner-grow-sm d-none"
                                                 role="status" aria-hidden="true"></span>Continue</a>
