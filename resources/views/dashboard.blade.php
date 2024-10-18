@@ -724,7 +724,7 @@
                     </div>
                     <div clas="col-md-12">
                         <div class="submit-section btnpr">
-                            <a href="{{route('oel_360')}}">
+                            <a href="{{route('view-approved-university')}}">
                                 <button type="button" class="btn btn-outline-primary">Read More</button>
                             </a>
                         </div>
@@ -745,13 +745,13 @@
                     <div clas="col-md-12">
                         <div class="blclr">
                             <h5>
-                                <i class="la la-user clruser"></i>{{DB::table('program')->where('status',1)->count()}}
+                                <i class="la la-user clruser"></i>{{$data['total_program']}}
                             </h5>
                         </div>
                     </div>
                     <div clas="col-md-12">
                         <div class="submit-section btnpr">
-                            <a href="{{route('oel_360')}}">
+                            <a href="{{route('approve-program')}}">
                                 <button type="button" class="btn btn-outline-primary">Read More</button>
                             </a>
                         </div>

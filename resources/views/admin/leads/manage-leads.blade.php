@@ -143,6 +143,22 @@
                                             placeholder="Enter Details Here" id="paymentModeRemarks">
                                         <div class="payment-mode-remarks-error text-danger"></div>
                                     </div>
+                                    {{-- for bank details  --}}
+                                    <div class="bank-details" style="display:none;">
+                                        <input type="text" name="bankName" class="form-control "
+                                            placeholder="Enter Bank Name" id="bankName">
+                                        <div class="bank-name-error text-danger"></div>
+                                        <br>
+                                        <input type="text" name="accountNo" class="form-control "
+                                            placeholder="Enter Account No" id="accountNo">
+                                        <div class="account-no-error text-danger"></div>
+                                        <br>
+                                        <input type="text" name="ifscCode" class="form-control "
+                                            placeholder="Enter IFSC Code" id="ifscCode">
+                                        <div class="ifsc-code-error text-danger"></div>
+                                        <br>
+                                    </div>
+                                    {{-- end bank details  --}}
                                 </div>
                                 {{-- <div class="col-md-12 vsb payment" style="display: none;">
                                     <label>Amount (With gst)<span class="text-danger">*</span></label>
@@ -201,6 +217,12 @@
                                     <div class="col-md-6 col-sm-6">
                                         <button type="button" value=""  class="btn btn-info d-lg-block m-l-15 btnDiv " id="payment" >
                                             Payment</button>
+                                    </div>
+                                </div>
+                                <div class="row submit-amount"  style="display: none">
+                                    <div class="col-md-6 col-sm-6">
+                                        <button type="button" value=""  class="btn btn-info d-lg-block m-l-15 btnDiv " id="submitData" >
+                                            Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -360,6 +382,9 @@
             var paymentTypeRemarks = null;
             var paymentMode = null;
             var paymentModeRemarks = null;
+            var bankName = null;
+            var accountNo = null;
+            var ifscCode = null;
             var sub_service = null;
             var amount = null;
             var discount = null;
@@ -407,6 +432,8 @@
                     $('.error-discount').html('Discount Field Required');
                     $('.btnDiv').removeClass('disabled');
                     return;
+                }else{
+                    $('.error-discount').html('');
                 }
                 if ($('.discount-field').is(':visible'))
                 {
@@ -426,9 +453,23 @@
                 if(!paymentModeRemarks){
                     $('.payment-mode-remarks-error').html('Payment  Mode Remarks Field Required');
                     $('.btnDiv').removeClass('disabled');
+                    console.log('10');
                     return;
                 }
             }
+            // bank details here
+            if ($('.bank-details').is(':visible')) {
+                bankName = $('#bankName').val();
+                accountNo = $('#accountNo').val();
+                ifscCode = $('#ifscCode').val();
+                if (!bankName || !accountNo || !ifscCode) {
+                    console.log('12');
+                    $('.bank-name-error .account-no-error .ifsc-code-error').html('Bank Name, Account No and IFSC Code are required');
+                    $('.btnDiv').removeClass('disabled');
+                    return;
+                }
+            }
+
             if ($('.paymentTypeRemarks').is(':visible')) {
                 var paymentTypeRemarks = $('#paymentTypeRemarks').val();
                 if(!paymentTypeRemarks){
@@ -475,6 +516,9 @@
                     comment:comment,
                     next_calling_date:next_calling_date,
                     payment_data:payment_data,
+                    bankName:bankName,
+                    accountNo:accountNo,
+                    ifscCode:ifscCode,
                 },
                 success: function(response) {
                     $('.btnDiv').removeClass('disabled');
@@ -508,12 +552,24 @@
         });
         $('#paymentMode').on('change', function() {
             var selectedValue = $(this).val();
-            if (selectedValue === 'Cash' || selectedValue === 'Bank') {
+            if (selectedValue === 'Cash' || selectedValue === 'Cheque') {
                 $('.paymentModeRemarks').show();
-            } else {
+                $('.bank-details').hide();
+                $('.submit-amount').show();
+                $('.payment-button').hide();
+            }else if(selectedValue === 'Bank'){
+                $('.bank-details').show();
                 $('.paymentModeRemarks').hide();
+                $('.submit-amount').show();
+                $('.payment-button').hide();
+            }else{
+                $('.paymentModeRemarks').hide();
+                $('.bank-details').hide();
+                $('.submit-amount').hide();
+                $('.payment-button').show();
             }
         });
+
         $('#paymentType').on('change', function() {
             var selectedValue = $(this).val();
             if (selectedValue === 'Course Fee') {

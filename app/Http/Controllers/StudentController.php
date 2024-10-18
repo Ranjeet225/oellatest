@@ -21,6 +21,7 @@ use App\Models\{
     StudentRegistrationFees,
     Subject,
     University,
+    PaymentsLink,
     User
 };
 use Illuminate\Http\Request;
@@ -1275,11 +1276,16 @@ class StudentController extends Controller
             'user_id' => $student->user_id,
             'program_id'=>$request->selected_program,
             'master_service' => $request->master_service,
-            'sub_service' =>implode(',', $request->sub_service),
+            'sub_service' =>implode(',', $request->sub_service ?? []),
             'discount' => $request->discount ?? 0,
             'is_discount'=>$request->is_discount,
             'email' => $student->email,
             'remarks' => $request->remarks,
+            'payment_mode' => $request->paymentMode ?? null,
+            'payment_mode_remarks' => $request->paymentModeRemarks ?? null,
+            'bankName' => $request->bankName ?? null,
+            'accountNo' => $request->accountNo ?? null,
+            'ifscCode' => $request->ifscCode ?? null,
             'amount' => $amount,
             'expired_in' => date('Y-m-d H:i:s', strtotime('+10 days')),
             'fallowp_unique_id' => $uniqueId,

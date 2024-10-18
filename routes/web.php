@@ -554,7 +554,7 @@ Route::middleware('auth')->group(function () {
             Route::post('update/{id?}',[CmsController::class,'subservice_update'])->name('subservice.update');
             Route::post('store',[CmsController::class,'subservice_store'])->name('subservice.store');
         });
-        
+
         Route::get('sub-service/{id?}',[OtherMasterDataController::class,'sub_service'])->name('sub_service');
         Route::get('create-sub-service',[OtherMasterDataController::class,'sub_service_create'])->name('create-sub-service');
         Route::get('edit-sub-service/{id?}',[OtherMasterDataController::class,'sub_service_edit'])->name('edit-sub-service');

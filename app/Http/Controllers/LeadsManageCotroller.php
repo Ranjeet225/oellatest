@@ -10,10 +10,11 @@ use Carbon\Carbon;
 use Gate;
 use Hash;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\{Auth, DB, FacadesValidator, Http, Log, Mail, Session, Str};
+use Illuminate\Support\Facades\{Auth, DB, FacadesValidator, Http, Log, Mail, Session};
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Role;
 use Validator;
+use Str;
 
 class LeadsManageCotroller extends Controller
 {
@@ -698,6 +699,11 @@ class LeadsManageCotroller extends Controller
             'next_calling_date' => $request->next_calling_date,
             'amount' => $request->amount ?? null,
             'fallowp_unique_id'=> $uniqueId,
+            'bankName' => $request->bankName ?? null,
+            'accountNo' => $request->accountNo ?? null,
+            'ifscCode' => $request->ifscCode ?? null,
+            'sub_service'  => implode(',', $request->sub_service) ?? null,
+            'is_discount' => $request->is_discount ?? 0,
             'created_at' => now(),
         ];
         StudentByAgent::where('id', $request->student_id)->update([

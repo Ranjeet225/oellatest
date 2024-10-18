@@ -242,6 +242,39 @@
                                     <label for="usr_discount" class="form-label">Discount</label>
                                 </div>
                             </div>
+                            <div class="col-md-12 vsb payment" >
+                                <label>Payment Mode<span class="text-danger">*</span></label>
+                                <select name="paymentMode" class="form-control " id="paymentMode">
+                                    <option value="">Select Payment Mode</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Cheque">Cheque</option>
+                                    <option value="Online">Online</option>
+                                    <option value="Bank">Bank</option>
+                                </select>
+                                <div class="payment-mode-error text-danger"></div>
+                                <br>
+                                <div class="paymentModeRemarks" style="display:none;">
+                                    <input type="text" name="paymentModeRemarks" class="form-control "
+                                        placeholder="Enter Details Here" id="paymentModeRemarks">
+                                    <div class="payment-mode-remarks-error text-danger"></div>
+                                </div>
+                                {{-- for bank details  --}}
+                                <div class="bank-details" style="display:none;">
+                                    <input type="text" name="bankName" class="form-control "
+                                        placeholder="Enter Bank Name" id="bankName">
+                                    <div class="bank-name-error text-danger"></div>
+                                    <br>
+                                    <input type="text" name="accountNo" class="form-control "
+                                        placeholder="Enter Account No" id="accountNo">
+                                    <div class="account-no-error text-danger"></div>
+                                    <br>
+                                    <input type="text" name="ifscCode" class="form-control "
+                                        placeholder="Enter IFSC Code" id="ifscCode">
+                                    <div class="ifsc-code-error text-danger"></div>
+                                    <br>
+                                </div>
+                                {{-- end bank details  --}}
+                            </div>
 
                             <div class="col-12">
                                 <div class="form-floating">
@@ -252,9 +285,21 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="col-md-12"><button type="button"
-                            class="btn btn-info  py-6 payment"><span class="spinner-grow spinner-grow-sm d-none"
-                            role="status" aria-hidden="true"></span>Payment</button>
+                        <div class="row payment-button"  style="display: none">
+                            <div class="col-md-6 col-sm-6">
+                                <button type="button"  class="btn btn-info d-lg-block m-l-15 btnDiv " id="payment" >
+                                    Payment
+                                    <span class="spinner-grow spinner-grow-sm d-none" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row submit-amount"  style="display: none">
+                            <div class="col-md-6 col-sm-6">
+                                <button type="button"  class="btn btn-info d-lg-block m-l-15 btnDiv " id="submitData" >
+                                    Submit
+                                    <span class="spinner-grow spinner-grow-sm d-none" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -309,6 +354,25 @@
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.2/dist/sweetalert2.all.min.js"></script>
     <script src="{{ asset('assets/js/jquery-3.7.1.js') }}"></script>
     <script>
+         $('#paymentMode').on('change', function() {
+            var selectedValue = $(this).val();
+            if (selectedValue === 'Cash' || selectedValue === 'Cheque') {
+                $('.paymentModeRemarks').show();
+                $('.bank-details').hide();
+                $('.submit-amount').show();
+                $('.payment-button').hide();
+            }else if(selectedValue === 'Bank'){
+                $('.bank-details').show();
+                $('.paymentModeRemarks').hide();
+                $('.submit-amount').show();
+                $('.payment-button').hide();
+            }else{
+                $('.paymentModeRemarks').hide();
+                $('.bank-details').hide();
+                $('.submit-amount').hide();
+                $('.payment-button').show();
+            }
+        });
         function discountField() {
             if ($("#is_discount").val() == "1") {
                 $(".discount-field").show();
@@ -350,8 +414,8 @@
                     }
                 });
             }
-            $('.payment').on('click', function(event) {
-                $('.payment').addClass('disabled');
+            $('.btnDiv').on('click', function(event) {
+                $('.btnDiv').addClass('disabled');
                 var spinner = this.querySelector('.spinner-grow');
                 spinner.classList.remove('d-none');
                 var formData = $('#score-data').serialize();
@@ -373,11 +437,11 @@
                                 // location.reload();
                             }, 1000);
                         }
-                        $('.payment').removeClass('disabled');
+                        $('.btnDiv').removeClass('disabled');
                         $('#score-data')[0].reset();
                     },
                     error: function(xhr) {
-                        $('.payment').removeClass('disabled');
+                        $('.btnDiv').removeClass('disabled');
                         spinner.classList.add('d-none');
                         var response = JSON.parse(xhr.responseText);
                         console.log(response);

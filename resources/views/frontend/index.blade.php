@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="row d-flex justify-content-center align-items-center b-flv">
                     <div class="col-lg-5">
-                        <div class="sec_air_Plane d-none d-lg-block" "="">    
+                        <div class="sec_air_Plane d-none d-lg-block" "="">
                             <h1 class=" fw-bold">Dreaming of Studying <br>
                             Abroad? <sapn class="text-black">We're Here to</sapn> <br>
                             Guide You!</h1>
@@ -46,7 +46,7 @@
 <section>
     <div class="marquee_section ">
         <img src="{{asset('frontend/img/transparent gif.gif')}}">
-       
+
     </div>
 </section>
 <section>
@@ -98,17 +98,24 @@
                                 <img src="{{asset('/imagesapi')}}/{{$item->image}}">
                                 <div class="confusion mt-4">
                                     <h4 class="text-center fw-bold imgg">{{$item->name}}</h4>
-                                    @php
-                                    $content = strip_tags($item->content);
-                                    $words = explode(' ', $content);
-                                    $content = implode(' ', array_slice($words, 0, 10));
-                                    echo $content . '... ';
-                                    @endphp
-                                    
-                                    
+
+                                    <p class="short-content">
+                                        @php
+                                            $content = strip_tags($item->content);
+                                            $words = explode(' ', $content);
+                                            $shortContent = implode(' ', array_slice($words, 0, 10));
+                                            echo $shortContent . '... ';
+                                        @endphp
+                                    </p>
+
+                                    <p class="full-content" style="display:none;">
+                                        {{ strip_tags($item->content) }}
+                                    </p>
+
+                                    <a href="javascript:void(0);" class="read-more-btn">Read More</a>
                                 </div>
-                                <a href="" >Read More</a>
                             </div>
+
                         </div>
                     </div>
                     @endforeach
@@ -1014,7 +1021,7 @@
                         <div class="container rounded">
                             <div class="slider">
                                 <div class="logos">
-                                    
+
                                     @foreach($universitiesrtl as $value )
                                     <img src="{{asset($value->logo)}}" alt="image">
                                     @endforeach
@@ -1055,7 +1062,7 @@
                                 </div>
                                 <div class="rigt_img ">
                                     <img src="{{asset('/frontend/img/14254.png')}}" alt="image">
-                                    
+
                                 </div>
 
                             </div>
@@ -1188,7 +1195,7 @@
 		jQuery(this).parents('.botIcon').removeClass('showBotSubject');
 		jQuery(this).parents('.botIcon').addClass('showMessenger');
 	});
-	
+
 	/* Chatboat Code */
 	$(document).on("submit", "#messenger", function(e) {
 		e.preventDefault();
@@ -1288,4 +1295,26 @@
 	/* Chatboat Code */
 })
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.read-more-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            let parentDiv = btn.closest('.confusion');
+            let shortContent = parentDiv.querySelector('.short-content');
+            let fullContent = parentDiv.querySelector('.full-content');
+
+            if (fullContent.style.display === 'none') {
+                fullContent.style.display = 'block';
+                shortContent.style.display = 'none';
+                btn.textContent = 'Read Less';
+            } else {
+                fullContent.style.display = 'none';
+                shortContent.style.display = 'block';
+                btn.textContent = 'Read More';
+            }
+        });
+    });
+});
+</script>
 @endsection
+

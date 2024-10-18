@@ -234,7 +234,7 @@
                     </thead>
                     <tbody id="lead-list">
                         @php
-                            $i = ($lead_list->currentPage()-1)* $lead_list->perPage()+1;
+                            // $i = ($lead_list->currentPage()-1)* $lead_list->perPage()+1;
                         @endphp
                         @foreach ($lead_list as $data)
                             <tr>
@@ -339,7 +339,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12">
                         <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-                            {{ $lead_list->withQueryString()->links() }}
+                            {{-- {{ $lead_list->withQueryString()->links() }} --}}
                         </div>
                     </div>
                 </div>
